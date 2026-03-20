@@ -37,3 +37,27 @@ Join our community and help improve Meshtastic! 🚀
 ## Stats
 
 ![Alt](https://repobeats.axiom.co/api/embed/8025e56c482ec63541593cc5bd322c19d5c0bdcf.svg "Repobeats analytics image")
+
+## Utility scripts
+
+### QSO map from ADIF + QRZ.com
+
+The repository now also includes `bin/qso_map_from_adif.py`, a standalone Python utility that:
+
+- reads QSO records from an ADIF (`.adi`) file,
+- looks up each callsign via the QRZ.com XML API,
+- extracts station coordinates (`lat`/`lon`, or derives them from the Maidenhead grid), and
+- generates an interactive HTML map using Leaflet/OpenStreetMap.
+
+Example:
+
+```bash
+python3 bin/qso_map_from_adif.py \
+  --adif log.adi \
+  --output qso-map.html \
+  --qrz-username YOUR_QRZ_USERNAME \
+  --qrz-password YOUR_QRZ_PASSWORD
+```
+
+You can also provide credentials via `QRZ_USERNAME` and `QRZ_PASSWORD` environment variables.
+
